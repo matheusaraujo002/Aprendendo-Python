@@ -1,8 +1,7 @@
 import pyautogui
 import pyperclip
-import pandas
 
-pyautogui.PAUSE = 0.3
+pyautogui.PAUSE = 0.3 # Delay de 0.3s para cada linha do pyautogui
 
 # pyautogui.click -> Clicar
 # pyautogui.press -> Apertar uma tecla
