@@ -1,5 +1,5 @@
 import pyautogui
-import pyperclip
+import pyperclip # Biclioteca para reconhecer caracteres. Ex: ?
 
 pyautogui.PAUSE = 0.3 # Delay de 0.3s para cada linha do pyautogui
 
