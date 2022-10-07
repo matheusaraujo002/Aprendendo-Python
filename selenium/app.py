@@ -1,14 +1,18 @@
 # Bibliotecas
-import pyautogui
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.chrome.options import Options
 
 # Inserindo webdriver do Chrome (Versão 106.0.5249.91)
 navegador = webdriver.Chrome()
 
-navegador.minimize_window
+## Navegador invisível Em Breve ##
 
-# Coleta de dados da moeda Dólar
+navegador.minimize_window()
+
+print("●❯────────────────────────────────────────────❮●")
+
+# Coleta de dados da moeda Dólar.
 
 navegador.get("https://www.google.com.br/")
 
@@ -18,9 +22,9 @@ navegador.find_element('xpath', '/html/body/div[1]/div[3]/form/div[1]/div[1]/div
 
 cotacaoDolar = navegador.find_element("xpath", '//*[@id="knowledge-currency__updatable-data-column"]/div[1]/div[2]/span[1]').get_attribute('data-value')
 
-print("Valor do Dólar (em Real):", cotacaoDolar)
+print("Valor atual do Dólar (em Real):", cotacaoDolar)
 
-# Coleta de dados da moeda Euro
+# Coleta de dados da moeda Euro.
 
 navegador.get("https://www.google.com.br/")
 
@@ -30,9 +34,9 @@ navegador.find_element('xpath', '/html/body/div[1]/div[3]/form/div[1]/div[1]/div
 
 cotacaoEuro = navegador.find_element("xpath", '//*[@id="knowledge-currency__updatable-data-column"]/div[1]/div[2]/span[1]').get_attribute('data-value')
 
-print("Valor do Euro (em Real):", cotacaoEuro)
+print("Valor atual do Euro (em Real):", cotacaoEuro)
 
-# Coleta de dados da moeda Iene Japonês
+# Coleta de dados da moeda Iene Japonês.
 
 navegador.get("https://www.google.com.br/")
 
@@ -42,13 +46,29 @@ navegador.find_element('xpath', '/html/body/div[1]/div[3]/form/div[1]/div[1]/div
 
 cotacaoIene = navegador.find_element("xpath", '//*[@id="knowledge-currency__updatable-data-column"]/div[1]/div[2]/span[1]').get_attribute('data-value')
 
-print("Valor do Iene (em Real):", cotacaoIene)
+print("Valor atual do Iene (em Real):", cotacaoIene)
 
-pyautogui.hotkey("Ctrl", "w")
+# Fechar navegador após a conclusão da coleta de dados.
+navegador.quit()
 
-###############################################
+print("●❯──────────────────────────────────────────────────────────────────────────────────────────❮●")
 
 import pandas as pd
 
 tabela = pd.read_excel("Produtos.xlsx")
+
+tabela.loc[tabela["Moeda"] == "Dólar", "Cotação"] = float(cotacaoDolar)
+
+tabela.loc[tabela["Moeda"] == "Euro", "Cotação"] = float(cotacaoEuro)
+
+tabela.loc[tabela["Moeda"] == "Iene", "Cotação"] = float(cotacaoIene)
+
+tabela["Preço de Compra"] = tabela["Preço Original"] * tabela["Cotação"]
+
+tabela["Preço de Venda"] = tabela["Preço de Compra"] * tabela["Margem"]
+
 print(tabela)
+print("●❯──────────────────────────────────────────────────────────────────────────────────────────❮●")
+
+# Criando novo documento com a tabela atualizada.
+tabela.to_excel("Produtos Novo.xlsx", index=False)
