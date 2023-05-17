@@ -12,18 +12,18 @@ Entre R$ 120,00 e R$ 200,00 (inclusive)	           Caro
 Maior que R$ 200,00	                            Muito Caro
 '''
 
-preço = float(input("Digite o preço do produto: R$ "))
-if preço <= 50:
-    aumento = preço * 0.05
-    ajuste = preço + aumento
+preco = float(input("Digite o preço do produto: R$ "))
+if preco <= 50:
+    aumento = preco * 0.05
+    ajuste = preco + aumento
 else:
-    if preço >= 50 and preço <= 100:
-        aumento = preço * 0.1
-        ajuste = preço + aumento
+    if preco >= 50 and preco <= 100:
+        aumento = preco * 0.1
+        ajuste = preco + aumento
     else:
-        if preço > 100:
-            aumento = preço * 0.15
-            ajuste = preço + aumento
+        if preco > 100:
+            aumento = preco * 0.15
+            ajuste = preco + aumento
 
 if ajuste <= 80:
     classificacao = 'Barato'
