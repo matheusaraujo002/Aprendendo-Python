@@ -15,7 +15,7 @@ while True:
     else:
         if num < menorNum:
             menorNum = num
-        contador += 1
+    contador += 1
 
 print(f"O maior número é {maiorNum}")
 print(f"O menor número é {menorNum}")
