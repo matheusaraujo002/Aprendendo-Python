@@ -1,3 +1,4 @@
+#
 maiorNum = 0
 menorNum = 0
 contador = 0
