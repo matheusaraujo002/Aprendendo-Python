@@ -13,10 +13,10 @@ while True:
     if anacleto < felisberto:
         break
     else:
-        anos = anos + 1
-        anacleto = anacleto + 0.02
+        anos += 1
+        anacleto += 0.02
         print(f"Anacleto está com {anacleto:.2f}")
-        felisberto = felisberto + 0.03
+        felisberto += 0.03
         print(f"Felisberto está com {felisberto:.2f}")
         print("")
 print(f"Felisberto ficou maior que Anacleto depois de {anos} anos.")
