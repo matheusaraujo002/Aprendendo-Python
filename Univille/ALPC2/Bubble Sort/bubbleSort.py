@@ -3,7 +3,7 @@ Dado o vetor nomes com vários nomes desordenados, ordene-os usando o bubble sor
 """
 nomes = []
 
-arquivo = open('Univille/ALPC2/Strings/nomes.txt')
+arquivo = open('Univille/ALPC2/Bubble Sort/nomes.txt')
 for linha in arquivo:
     nomes.append(linha.strip())
 arquivo.close()
