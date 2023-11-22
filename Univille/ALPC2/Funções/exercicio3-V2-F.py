@@ -1,18 +1,29 @@
-""" 
-Faça um programa com duas funções, que solicite ao usuário uma temperatura em Fahrenheit e 
-retorna em Celcius e outra que faz o inverso. Lembrando que as fórmulas são 
-℃ = (℉ - 32) ÷ 1,8 e ℉ = ℃ X 1,8 + 32.
-"""
-
 def Fahrenheit(t):
-    Celcius = (t - 32) / 1.8
-    return Celcius
+    Celsius = (t - 32) / 1.8
+    return Celsius
 
-def Celcius(t):
+def Celsius(t):
     Fahrenheit = (t * 1.8) + 32
     return Fahrenheit
 
-t = int(input("Digite a temperatura Fahrenheit para fazer a conversão: "))
-print(f'{Fahrenheit(t):.2f}° Celcius')
-t = int(input("Digite a temperatura Celcius para fazer a conversão: "))
-print(f'{Celcius(t):.2f}° Fahrenheit')
+def obter_temperatura_fahrenheit():
+    while True:
+        try:
+            t = float(input("Digite a temperatura em Fahrenheit para fazer a conversão em °C: "))
+            return t
+        except ValueError:
+            print("Valor inválido! Por favor, insira um número.")
+
+def obter_temperatura_celsius():
+    while True:
+        try:
+            t = float(input("Digite a temperatura em Celsius para fazer a conversão em °F: "))
+            return t
+        except ValueError:
+            print('Valor inválido! Por favor, insira um número.')
+
+temperatura_f = obter_temperatura_fahrenheit()
+print(f'{Fahrenheit(temperatura_f):.2f}° Celsius')
+
+temperatura_c = obter_temperatura_celsius()
+print(f'{Celsius(temperatura_c):.2f}° Fahrenheit')
